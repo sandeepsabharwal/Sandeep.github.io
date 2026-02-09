@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --accent: #ff9800;
+      --dark: #0f172a;
+      --light: #f8fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--light);
+      color: #222;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    header h2 {
+      color: var(--primary);
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      bottom: -5px;
+      left: 0;
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 10% 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      animation: slideLeft 1s ease forwards;
+    }
+
+    .hero-text h1 {
+      font-size: 46px;
+      line-height: 1.3;
+    }
+
+    .hero-text span {
+      color: var(--accent);
+    }
+
+    .hero-text h3 {
+      margin: 15px 0;
+      font-weight: 400;
+    }
+
+    .typing {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 34px;
+      background: var(--primary);
+      color: white;
+      border-radius: 40px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(79,70,229,0.4);
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(79,70,229,0.6);
+    }
+
+    .socials {
+      margin-top: 25px;
+    }
+
+    .socials a {
+      margin-right: 15px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .avatar {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, var(--accent), var(--primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 90px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 100px 10%;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+      opacity: 0.85;
+    }
+
+    .dark {
+      background: var(--dark);
+      color: white;
+    }
+
+    /* SKILLS */
+    .skills {
+      margin-top: 40px;
+    }
+
+    .skills span {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 26px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      animation: pop 0.8s ease forwards;
+    }
+
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 30px;
+      text-align: center;
+      background: black;
+      color: #aaa;
+    }
+
+    /* ANIMATIONS */
+    @keyframes slideLeft {
+      from {opacity:0; transform: translateX(-60px);}
+      to {opacity:1; transform: translateX(0);}
+    }
+
+    @keyframes float {
+      0%,100% {transform: translateY(0);}
+      50% {transform: translateY(-15px);}
+    }
+
+    @keyframes pop {
+      from {transform: scale(0.8); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 900px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .avatar {
+        margin-bottom: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>JS</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Hi There,<br>I'm <span>Your Name</span></h1>
+    <h3>I am into <span class="typing"></span></h3>
+
+    <a href="#about" class="btn">About Me</a>
+
+    <div class="socials">
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter</a>
+    </div>
+  </div>
+
+  <div class="avatar">👋</div>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I'm a passionate web developer who loves creating modern,
+    fast and visually pleasing websites. I enjoy learning,
+    building and sharing projects on GitHub.
+  </p>
+</section>
+
+<section id="skills" class="dark">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>React</span>
+    <span>Git & GitHub</span>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>Portfolio</h3>
+      <p>Animated personal portfolio website.</p>
+      <a href="#">GitHub →</a>
+    </div>
+    <div class="card">
+      <h3>Todo App</h3>
+      <p>Todo app using JavaScript and localStorage.</p>
+      <a href="#">GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="dark">
+  <h2>Contact</h2>
+  <p>Email: yourmail@example.com</p>
+</section>
+
+<footer>
+  © 2026 Your Name • Built with ❤️
+</footer>
+
+<script>
+  const words = ["Web Development", "Frontend Design", "Open Source"];
+  let i = 0, j = 0, deleting = false;
+
+  function type() {
+    const text = document.querySelector(".typing");
+    if (!deleting) {
+      text.textContent = words[i].slice(0, ++j);
+      if (j === words[i].length) deleting = true;
+    } else {
+      text.textContent = words[i].slice(0, --j);
+      if (j === 0) {
+        deleting = false;
+        i = (i + 1) % words.length;
+      }
+    }
+    setTimeout(type, deleting ? 80 : 120);
+  }
+  type();
+</script>
+
+</body>
+</html>
